@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>pengge的网页</title>
+    	<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="css/tou.css" type="text/css" rel="stylesheet">
+    <script src="other/aos.js"></script>
+    <link rel="stylesheet" href="other/aos.css" />
+    <style type="text/css">
+        .image-move:hover{
+            margin-left: -40px;
+        }
+        .boxbox-neirong{
+            color: #646A73;font-size: 30px;
+        }
+        .main6-left:hover{
+            /*box-shadow:10px 10px 5px #888888; ;*/
+            box-shadow: 0 2px 16px #000, 0 0 1px #000, 0 0 1px #000;
+
+        }
+        .main6-left{
+            cursor: pointer;
+        }
+        .main6-image{
+            margin-left: 200px;
+            margin-top: 30px;
+        }
+    </style>
+    <script>
+
+    </script>
+
+    <script>
+        window.onload = function(){
+            var login = document.querySelector('#login');
+            var close = document.querySelector('#close');
+            var mask = document.querySelector('.login-mask');
+            login.onclick = function(){
+                mask.style.display = "block";
+                mask.style.backgroundImage="inherit";
+
+            }
+            close.onclick = function(){
+                mask.style.display = "none";
+            }
+        }
+    </script>
+
+<!--/*注册背景图-->
+    <style>
+                .login-mask{
+                width: 100%;
+                height: 100%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                background-color: rgba(0,0,0,0.5);
+                display: none;
+            }
+            .login-mask .login-box{
+                background-image: url("image/timg (1).jpg");
+                width: 550px;
+                height: 660px;
+                border: 1px solid #000;
+                position: fixed;
+                left: 50%;
+                margin-left: -230px;
+                margin-top: 70px;
+                top: 80px;
+                background-color: #fff;
+                border-radius: 20px;
+
+            }
+
+
+
+            .className{
+        line-height:30px;
+        height:30px;
+        width:80px;
+        color:#ffffff;
+        background-color:#ededed;
+        font-size:15px;
+        font-weight:bold;
+        font-family:Arial,serif;
+        background:-webkit-gradient(linear, left top, left bottom, color-start(0.05, #79bbff), color-stop(1, #378de5));
+        background:-moz-linear-gradient(top, #79bbff 5%, #378de5 100%);
+        background:-o-linear-gradient(top, #79bbff 5%, #378de5 100%);
+        background:-ms-linear-gradient(top, #79bbff 5%, #378de5 100%);
+        background:linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
+        background:-webkit-linear-gradient(top, #79bbff 5%, #378de5 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5',GradientType=0);
+        border:1px solid #84bbf3;
+        -webkit-border-top-left-radius:6px;
+        -moz-border-radius-topleft:6px;
+        border-top-left-radius:6px;
+        -webkit-border-top-right-radius:6px;
+        -moz-border-radius-topright:6px;
+        border-top-right-radius:6px;
+        -webkit-border-bottom-left-radius:6px;
+        -moz-border-radius-bottomleft:6px;
+        border-bottom-left-radius:6px;
+        -webkit-border-bottom-right-radius:6px;
+        -moz-border-radius-bottomright:6px;
+        border-bottom-right-radius:6px;
+        -moz-box-shadow: inset 0px 1px 0px 0px #bbdaf7;
+        -webkit-box-shadow: inset 0px 1px 0px 0px #bbdaf7;
+        box-shadow: inset 0px 1px 0px 0px #bbdaf7;
+        text-align:center;
+        display:inline-block;
+        text-decoration:none;
+    }
+    .className:hover {
+        background-color:#f5f5f5;
+        background:-webkit-gradient(linear, left top, left bottom, color-start(0.05, #378de5), color-stop(1, #79bbff));
+        background:-moz-linear-gradient(top, #378de5 5%, #79bbff 100%);
+        background:-o-linear-gradient(top, #378de5 5%, #79bbff 100%);
+        background:-ms-linear-gradient(top, #378de5 5%, #79bbff 100%);
+        background:linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
+        background:-webkit-linear-gradient(top, #378de5 5%, #79bbff 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#378de5', endColorstr='#79bbff',GradientType=0);
+    }
+
+            .sub_btn {
+            width:136px;height:50px;  //需要说明的是，这里指定宽高的话，才会兼容，否则IE6和IE7就会变形
+            display: inline-block;
+            zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+            *display: inline;
+            vertical-align: baseline;
+            margin: 0 2px;
+            outline: none;
+            cursor: pointer;
+            text-align: center;
+            font: 14px/100% Arial, Helvetica, sans-serif;
+            padding: .5em 2em .55em;
+            text-shadow: 0 1px 1px rgba(0,0,0,.6);
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+            -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+            box-shadow: 0 1px 2px rgba(0,0,0,.2);
+            color: #e8f0de;
+            border: solid 1px #538312;
+            background: #64991e;
+            background: -webkit-gradient(linear, left top, left bottom, from(#7db72f), to(#4e7d0e));
+            background: -moz-linear-gradient(top,  #7db72f,  #4e7d0e);
+            filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#7db72f', endColorstr='#4e7d0e');
+    }
+    .sub_btn:hover {
+            background: #538018;
+            background: -webkit-gradient(linear, left top, left bottom, from(#6b9d28), to(#436b0c));
+            background: -moz-linear-gradient(top,  #6b9d28,  #436b0c);
+            filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#6b9d28', endColorstr='#436b0c');
+    }
+    </style>
+</head>
+<body>
+
+<div id="header">
+	<div class="header_inner_top"></div>
+	<div class="header_inner_bottom">
+		<div class="nav">
+        <div class="logo"><a href="#"><img src="image/066.jpg" height="75px" width="75px"/></a></div>
+        <div class="header_inner_bottom_middle">
+    	<ul class="menu">
+        	<li><a href="zhuye.html" target="_self" >首页</a></li>
+            <li><a href="#"  class="fanzhuan">产品</a>
+            	<ul class="sub_menu">
+                	<li><a href="#">手机</a></li>
+                    <li><a href="#">平板</a></li>
+                    <li><a href="#">VR</a></li>
+                    <li><a href="#">电脑</a></li>
+                   <li><a href="#">智能手表</a></li>
+                    <li class="#"><a href="wyqn.html">敬请期待</a></li>
+                </ul>
+            </li>
+            <li><a href="Campus_Recruiting.html">校园招聘</a></li>
+            <li><a href="News.html" target="_self">新闻公告</a></li>
+
+            <li><a href="CONTACT.html">联系我们</a></li>
+        </ul>
+        </div>
+        <div class="header_inner_bottom_right">
+        	<ul>
+
+                <li class="header_icom"><a href="#"><img  src="image/icom_03.png"/></a></li>
+                <li class="header_icom"><a href="#"  id="login01" ><img src="image/登入%20(1).png"/></a></li>
+
+                <li class="header_icom"><a href="#" id="login"><img  src="image/icom_02.png"/></a></li>
+                <div class="login-mask"  >
+                    <div class="login-box" style="background-color: #f5f9f8;">
+                        <div id="bannner" >
+                            <div class="title-line">
+                                <span class="tit" style="font-size: 48px;padding-left: 230px;">注册</span>
+                            </div>
+                            <form>
+                                <div class="minddle_bg">
+                                    <div class="first_input" style="margin-top: 30px;margin-left: 50px;">
+                                        <div style="float: left;"><img src="image/账户.png" alt=""/></div>
+                                        <div style="float: left;margin-left: 10px;"><input class="first_input_inner" style="width: 350px;height: 50px;font-size: 20px;" type="text" name="uname" placeholder="昵称" /></div>
+                                    </div>
+                                    <br>
+                                    <div class="first_input" style="margin-top: 70px;margin-left: 50px;">
+                                        <div style="float: left;"><img src="image/password.png" alt=""/></div>
+                                        <div style="float: left;margin-left: 10px;"><input class="first_input_inner"  style="width: 350px;height: 50px;font-size: 20px;" type="password" name="uname" placeholder="密码（6-16个字符组成，区分大小写）" /></div>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="first_input" style="margin-left: 60px;margin-top: 50px;width: 540px;">
+                                        <div style="float:left;"><select  class="first_input_select" style="width: 150px;height: 55px;font-size: 20px;">
+                                            <option>中国大陆</option>
+                                            <option>中国香港</option>
+                                            <option>中国台湾</option>
+                                            <option>日本</option>
+                                            <option>英国</option>
+                                            <option>美国</option>
+                                            <option>法国</option>
+                                            <option>波兰</option>
+                                            <option>加拿大</option>
+                                        </select>
+                                        </div>
+                                        <div style="float: left;"><input type="text" style="width: 230px;height: 50px;float:left;margin-left: 10px;font-size: 20px;" autocomplete="off" name="tel" placeholder="填写常用手机号" class="first_input_shouji"></div>
+                                    </div>
+
+                                    <br><br>
+                                    <div class="first_input" style="margin-left: 60px;margin-top: 40px;">
+                                        <input class="first_input_inner"  style="width: 180px;height: 50px;font-size: 20px;" type="password" name="uname" placeholder="请输入短信验证码" />
+                                        <button class="className" style="margin-left:20px;width: 160px;height: 50px;background-color: #2c43fa;color: white;" style="">点击获取</button>
+                                    </div>
+
+                                    <div class="first_agree" style="margin-left: 60px;margin-top: 60px;    line-height: 10px;">
+                                        <div style="float: left;height: 15px;"><input  type="checkbox" class="first_checkbox"/></div>
+                                        <div style="float: left;font-size: 19px;margin-left: 5px;">我同意<a class="ryh">《网站使用权》</a>和<a class="ryh">《尊重网站隐私协议》</a></div>
+                                    </div>
+                                    <br>
+                                    <div style="margin-left: 190px;margin-top: 30px;"> <button class="sub_btn" type="submit">注册</button></div>
+                                </div>
+                           </form>
+
+                        </div>
+
+                        <div style="margin-left: 240px;margin-top: 5px;"> <button id="close" style="background-color: #F8F8F8;;"><img src="image/取消.png"></button></div>
+                    </div>
+             </div>
+            </ul>
+        </div>
+       </div>
+   </div>
+</div>
+
+
+
+
+
+
+
+<div id="banner">
+        <div class="main-video" style="height: 950px;width: 700px;position: relative;">
+                <!--<video src="video/t0205h95ohv.p201.1.mp4"    autoplay muted loop height="1000px"  style="z-index: -1;  position: fixed;"></video>-->
+            <video id="v1" autoplay loop muted style=" position: absolute;   height: 1100.5px; z-index:-1; top:-150px;bottom: -100px;margin-bottom: 500px;">
+                <source src="video/ETSI Corporate Video.mp4" type="video/mp4"  style="min-width: 100%; min-height: 100%;  height: 120px;" />
+            </video>
+            <div style=" position: absolute;top:320px;left:400px; z-index:-1;width: 1200px;font-size: 60px;color: #B8860B;">Do challenging things with good people</div>
+            <div style=" position: absolute;top:450px;left:850px; z-index:-1;width: 900px;font-size: 45px;color: blue;">JOIN US</div>
+            <div style=" position: absolute;top:570px;left:650px; ">
+                <div class="boxx" style="width: 800px;">
+                    <input type="text" autocapitalize="off" class="sousuo-anniu" placeholder="输入城市或职位进行搜索" style="border-radius:30px;border-color:rgb(0,0,0,0);float:left;color: #1f2329;width: 600px;height:65px;font-size: 30px;">
+                    <button id="search-button" style="margin-left: -65px; float:left;border-radius: 30px;width: 70px;height: 70px;border-radius: 50%;background-color:#3370FF;"><img src="image/icom_01.png"></button>
+                </div>
+                <!--<div class="search">
+                   <input class="search-input" placeholder="Type to search"></input>
+                     <i class="fa fa-search"></i>这里引用了字体图标，使用方法见http://fontawesome.dashgame.com
+                    <button class="search-icon"  style=""><i class="fa fa-search"></i></button>
+                </div>-->
+            </div>
+        </div>
+        <div class="slogan-title">
+            <!--<div class="slogan__title">和优秀的人&nbsp;&nbsp;做ascsvdchsdvcchjsjvhsdc v<br>hshvcshdh<br>vcvshd vchsd有<br>挑战的事<br></div>
+            <div class="slogan_subtitle">
+                "JOIN US"
+            </div>-->
+        </div>
+        <div class="nodeSmall" id="node_small">
+        <div class="erweima hide" id="er">
+            <img src="image/erweima.png" alt=""/>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div id="main1" style="margin-top:100px;height: 1240px;"> <!--公司信息-->
+    <div id="header1" style="height: 190px;margin-bottom: 200px;">
+        <div id="header1-neirong" style="margin-left: 120px;font-size: 27px;padding-top: 50px;">
+            <h1>公司信息</h1>
+        </div>
+    </div>
+    <div id="main1-box" style="height: 550px;">
+        <div id="main1-box-left" style="margin-left:180px;float: left;width: 350px;height:470px;border-radius: 5px;background-color:#ededed;">
+            <div id="main1-box-left-image" style="margin-top: -130px;border-top-left-radius: 5px;"><a href="#">
+                <img class="image-move" src="image/corporate-information.jpg" style="border-top-left-radius: 5px;border-top-right-radius: 5px;height: 190px;width: 350px;"></a>
+            </div>
+            <div style="margin-left: 25px;margin-top:25px;font-size: 23px;color: #666666">关于公司</div>
+            <div style="margin-left:25px;margin-top: 8px;font-size: 35px;">公司简介</div>
+            <div style="margin-left:25px;margin-right:30px;font-size: 20px;line-height: 45px;">&nbsp;&nbsp;&nbsp;本公司是全球领先的信息与通信技术(ICT)解决方案供应商。为客户创造价值。保障网络安全稳定运行。推动产业良性发展。</div>
+            <div style="margin-left: 35px;margin-top:10px;font-size: 35px;"><a href="#">更多</a> <a href="#"> >></a></div>
+        </div>
+        <div id="main1-box-center"  style="margin-left:200px;float: left;width: 350px;height:470px;border-radius: 5px;background-color:#ededed;">
+             <div id="main1-box-center-image" style="margin-top: -130px;border-top-left-radius: 5px;"><a href="#">
+                <img class="image-move" src="image/gongsizhili.jpg" style="border-top-left-radius: 5px;border-top-right-radius: 5px;height: 190px;width: 350px;"></a>
+            </div>
+            <div style="margin-left: 25px;margin-top:25px;font-size: 23px;color: #666666">关于公司</div>
+            <div style="margin-left:25px;margin-top: 8px;font-size: 35px;">公司治理</div>
+            <div style="margin-left:25px;margin-right:30px;font-size: 20px;line-height: 45px;">&nbsp;&nbsp;&nbsp;公司坚持以客户为中心、以奋斗者为本，持续改善公司治理架构、组织、流程和考核，使公司长期保持有效增长。</div>
+            <div style="margin-left: 35px;margin-top:10px;font-size: 35px;"><a href="#">更多</a> <a href="#"> >></a></div>
+
+        </div>
+        <div id="main1-box-right" style="margin-left:200px;float: left;width: 350px;height:470px;border-radius: 5px;background-color:#ededed;">
+
+             <div id="main1-box-cright-image" style="margin-top: -130px;border-top-left-radius: 5px;"><a href="#">
+                <img class="image-move" src="image/sustainability.jpg" style="border-top-left-radius: 5px;border-top-right-radius: 5px;height: 190px;width: 350px;"></a>
+            </div>
+            <div style="margin-left: 25px;margin-top:25px;font-size: 23px;color: #666666">关于公司</div>
+            <div style="margin-left:25px;margin-top: 8px;font-size: 35px;">可持续发展</div>
+            <div style="margin-left:25px;margin-right:30px;font-size: 20px;line-height: 45px;">&nbsp;&nbsp;&nbsp;作为全球领先的ICT解决方案供应商，本公司积极致力社会经济的可持续发展，努力构建更加美好的未来。</div>
+            <div style="margin-left: 35px;margin-top:10px;font-size: 35px;"><a href="#">更多</a> <a href="#"> >></a></div>
+
+        </div>
+    </div>
+
+
+     <div id="main2-box" style="height: 550px;margin-top:100px;">
+        <div id="main2-box-left" style="margin-left:180px;float: left;width: 350px;height:470px;border-radius: 5px;background-color:#ededed;">
+            <div id="main2-box-left-image" style="margin-top: -130px;border-top-left-radius: 5px;"><a href="#">
+                <img class="image-move" src="image/trustcenter_banner_314x180_trustworthy.jpg" style="border-top-left-radius: 5px;border-top-right-radius: 5px;height: 190px;width: 350px;"></a>
+            </div>
+            <div style="margin-left: 25px;margin-top:25px;font-size: 23px;color: #666666">关于公司</div>
+            <div style="margin-left:25px;margin-top: 8px;font-size: 35px;">信任中心</div>
+            <div style="margin-left:25px;margin-right:30px;font-size: 20px;line-height: 45px;">&nbsp;&nbsp;&nbsp;本公司是全球领先的信息与通信技术(ICT)解决方案供应商。开放透明。隐私保护。开放透明。</div>
+            <div style="margin-left: 35px;margin-top:10px;font-size: 35px;"><a href="#">更多</a> <a href="#"> >></a></div>
+        </div>
+        <div id="main2-box-center"  style="margin-left:200px;float: left;width: 350px;height:470px;border-radius: 5px;background-color:#ededed;">
+             <div id="main2-box-center-image" style="margin-top: -130px;border-top-left-radius: 5px;"><a href="#">
+                <img class="image-move" src="image/about-huawei-partners.jpg" style="border-top-left-radius: 5px;border-top-right-radius: 5px;height: 190px;width: 350px;"></a>
+            </div>
+            <div style="margin-left: 25px;margin-top:25px;font-size: 23px;color: #666666">关于公司</div>
+            <div style="margin-left:25px;margin-top: 8px;font-size: 35px;">合作伙伴</div>
+            <div style="margin-left:25px;margin-right:30px;font-size: 20px;line-height: 45px;">&nbsp;&nbsp;&nbsp;公司坚持以客户为中心开放、合作、共赢 ，让我们一起实现客户价值。</div>
+            <div style="margin-left: 35px;margin-top:10px;font-size: 35px;"><a href="#">更多</a> <a href="#"> >></a></div>
+
+        </div>
+        <div id="main2-box-right" style="margin-left:200px;float: left;width: 350px;height:470px;border-radius: 5px;background-color:#ededed;">
+
+             <div id="main2-box-cright-image" style="margin-top: -130px;border-top-left-radius: 5px;"><a href="#">
+                <img class="image-move" src="image/img1.jpg" style="border-top-left-radius: 5px;border-top-right-radius: 5px;height: 190px;width: 350px;"></a>
+            </div>
+            <div style="margin-left: 25px;margin-top:25px;font-size: 23px;color: #666666">关于公司</div>
+            <div style="margin-left:25px;margin-top: 8px;font-size: 35px;">管理信息</div>
+            <div style="margin-left:25px;margin-right:30px;font-size: 20px;line-height: 45px;">&nbsp;&nbsp;&nbsp;董事会是公司的最高责任机构，承担带领公司前进的使命，行使公司战略与经营管理决策权，确保客户与股东的利益得到维护。</div>
+            <div style="margin-left: 35px;margin-top:10px;font-size: 35px;"><a href="#">更多</a> <a href="#"> >></a></div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    <section class="section section--code" style="margin-top: 500px;">
+			<div class="container">
+                <div style="font-size: 50px;margin-left: 80px;">企业文化</div>
+                <div style="margin-top:50px;margin-bottom:70px;margin-left: 100px;color: #646A73;font-size: 20px;">不断设定更高的目标，今天的最好变现是明天的最低要求</div>
+				<div class="code code--small code--left" aos="fade-up" style="height: 450px;width: 2000px;margin-bottom:150px;background-color: #F8F9FA;" >
+                    <pre>
+                        <div class="zuobianpic" style="float: left;margin-left: 250px;"><a href="#"><img src="image/our_vision01.jpg" style="height: 450px;width: 550px;border-radius: 30px;"/></a>
+                        </div>
+                        <div  class="youbiantext" style="float: left;margin-left: 450px;">
+                            <div class="boxbox-neirong" style="color: #646A73;font-size: 30px;">追求极致</div>
+                             <div class="boxbox-neirong">开放谦逊</div>
+                             <div class="boxbox-neirong">务实敢为</div>
+                             <div class="boxbox-neirong">坦诚清晰</div>
+                             <div class="boxbox-neirong">始终创业</div>
+                            <div class="boxbox-neirong">多元兼容</div>
+                        </div>
+                    </pre>
+                </div>
+
+
+
+                <div style="font-size: 50px;margin-left: 80px;">企业生活</div>
+                <div style="margin-top:50px;margin-bottom:70px;margin-left: 100px;color: #646A73;font-size: 20px;">在轻松积极的氛围里工作</div>
+				<div class="code code--small code--left" aos="fade-down" style="height: 450px;width: 2000px;margin-bottom:150px;background-color: #F8F9FA;" >
+                    <pre>
+                        <div class="zuobianpic" style="position:relative;left:1200px;margin-right: 250px;"><a href="#"><img src="image/u=261.jpg" style="height: 450px;width: 550px;border-radius: 30px;"/></a>
+                        </div>
+                        <div  class="youbiantext" style="margin-left: 100px;position:relative;top: -500px;">
+                            <div style="font-size: 25px;color:black;margin-bottom: -50px;">
+                                扁平开放的氛围里工作<br>
+                        <div style="">
+                                弹性灵活的工作时间
+                                </div>
+                                <div>
+                                高效开放的办公环境
+                                </div>
+                            </div>
+
+                        </div>
+                    </pre>
+                </div>
+
+               <div style="font-size: 50px;margin-left: 80px;">企业使命与愿景</div>
+                <div style="margin-top:50px;margin-bottom:70px;margin-left: 100px;color: #646A73;font-size: 20px;">构建万物互联的智能世界</div>
+				<div class="code code--small code--left" aos="fade-up-left" style="height: 450px;width: 2000px;margin-bottom:150px;background-color: #F8F9FA;" >
+                    <pre>
+                        <div class="zuobianpic" style="float: left;margin-left: 250px;"><a href="#"><img src="image/our_vision02.jpg" style="height: 450px;width: 550px;border-radius: 30px;"/></a>
+                        </div>
+                        <div  class="youbiantext" style="float: left;margin-left: 10px;">
+
+                                <div style="margin-left: 250px;font-size: 30px;">不让任何一个人在数字世界中掉队</div>
+                                <div style="margin-left: -180px;font-size:23px;">
+                                    科技不应高居象牙塔，而要普济天下，公司希望通过在技术<br>、
+                                    应用和技能三个方面的努力，持续扩大数字包容的成果，最<br>
+                                    终让数字技术惠及每个人、每个家庭、每个组织。</div>
+
+
+                        </div>
+                    </pre>
+                </div>
+
+
+                <div style="font-size: 50px;margin-left: 80px;">企业发展理念</div>
+                <div style="margin-top:50px;margin-bottom:70px;margin-left: 100px;color: #646A73;font-size: 20px;">开放、合作、共赢</div>
+				<div class="code code--small code--left" aos="fade-down-right" style="height: 450px;width: 2000px;margin-bottom:250px;background-color: #F8F9FA;" >
+                    <pre>
+                        <div class="zuobianpic" style="float: right;margin-left: 250px;padding-right: 200px;"><a href="#"><img src="image/our_vision03.jpg" style="height: 450px;width: 550px;border-radius: 30px;"/></a>
+                        </div>
+                        <div  class="youbiantext" style="float: left;margin-left: 450px;">
+
+                            <div class="boxbox-neirong666" style="font-size: 20px;line-height: 50px;"><span style="font-size: 35px;font-family: Gabriola;padding-bottom: 25px;">聚焦智能终端</span> <br>坚持开放式创新，构建友好、健康的产业环境，<br>开拓遍及全球、贴近生态伙伴的数字化、智能化<br>、本地化的“黑土地”，让各个伙伴的内容、应<br>用在上面生长，形成合力，为客户提供场景化的<br>解决方案与服务。</div>
+
+                        </div>
+                    </pre>
+                </div>
+
+
+                 <div style="font-size: 50px;margin-left: 880px;">员工心声</div>
+                <div style="margin-top:50px;margin-bottom:70px;margin-left: 800px;color: #646A73;font-size: 20px;">在这里，做最帅的自己，让优秀成为习惯</div>
+				<div class="code code--small code--left" aos="flip-up" style="height: 700px;width: 2000px;margin-bottom:150px;background-color: #F8F9FA;" >
+                    <div class="main6-left" style="float: left;height: 600px;width: 450px;margin-left: 300px;margin-top: 45px;">
+                        <div id="main6-left" style="margin-left: 110px;margin-top: 50px;"><a href="#"> <img src="image/u=1178595582,1700911496&fm=15&gp=0.jpg" height="250px" width="250px" style="border-radius: 99%;"></a></div>
+                        <div id="main6-left-tit" style="margin-left: 125px;font-size: 25px;margin-top: 25px;">体验最极致的成就感</div>
+                        <div id="main6-left-text" style="margin-top:20px;margin-left: 60px;margin-right:60px;line-height: 25px;font-size: 20px;">“公司没有让我们把所有时间都用来完成目标，仍然给大家很多时间，去做与业务没有直接关联的技术研究，大家都能停下脚步思考更多问题。”</div>
+                        <div class="main6-image"><a href="#"><img src="image/right.png" width="50px" height="50px"></a></div>
+                    </div>
+                    <div class="main6-left" style="float: left;height: 600px;width: 450px;margin-left: 55px;margin-top: 45px;">
+                        <div id="main6-center" style="margin-left: 110px;margin-top: 50px;"><a href="#"> <img src="image/u=1731693368,3859106174&fm=26&gp=0.jpg" height="250px" width="250px" style="border-radius: 99%;"></a></div>
+                        <div id="main6-center-tit" style="margin-left: 95px;font-size: 25px;margin-top: 25px;">每个人的声音都可以被听到</div>
+                         <div id="main6-center-text" style="margin-top:20px;margin-left: 60px;margin-right:60px;line-height: 25px;font-size: 20px;"> 公司有一个产品至上的概念，视用户为中心，所有的价值观和工作方法都在围绕这个概念展开。与此同时，这里的文化非常开放包容，没有太多的限制</div>
+                        <div class="main6-image"><a href="#"><img src="image/right.png" width="50px" height="50px"></a></div>
+
+                    </div>
+                    <div class="main6-left" style="float: left;height: 600px;width: 450px;margin-left: 55px;margin-top: 45px;">
+                        <div id="main6-right" style="margin-left: 110px;margin-top: 50px;"><a href="#"> <img src="image/u=1687955079,1891669372&fm=15&gp=0.jpg" height="250px" width="250px" style="border-radius: 99%;"></a></div>
+                        <div id="main6-right-tit" style="margin-left: 100px;font-size: 25px;margin-top: 25px;">在这里，看见更大的世界</div>
+                        <div id="main6-right-text" style="margin-top:20px;margin-left: 60px;margin-right:60px;line-height: 25px;font-size: 20px;">“比起其他公司，本公司可能更浪漫，或者说，有更大的梦想。这里不设边界，只要连接人与信息的事情，我们都会尝试去做。”</div>
+                        <div class="main6-image"><a href="#"><img src="image/right.png" width="50px" height="50px"></a></div>
+
+                    </div>
+                </div>
+
+			</div>
+</section>
+
+
+
+
+<div class="footer-main" style="height: 400px;margin-top:200px;bottom:0;background : #eeeeee;">
+        <div class="footer-menu">
+            <div class="footer-menu-item" style="float: left;width: 450px;">
+                <div class="footer-menu-title;" style="margin-bottom:30px;">
+                    <a href="#" style=";margin-left: 170px;font-size: 30px;color: black;text-decoration: none;margin-top: 200px;margin-bottom: 80px;">招聘首页</a>
+                </div>
+                <div style="margin-bottom:20px;"><a href="#" style="margin: 180px;  font-size: 20px;color: black;text-decoration: none;">校园招聘</a></div>
+                <div style="margin-bottom:20px;"><a href="#"  style="margin: 180px;  font-size: 20px;color: black;text-decoration: none;">社会招聘</a></div>
+                <div style="margin-bottom:20px;"><a href="#"  style="margin: 180px;  font-size: 20px;color: black;text-decoration: none;">招聘动态</a></div>
+                <div style="margin-bottom:20px;"><a href="#"  style="margin: 180px;  font-size: 20px;color: black;text-decoration: none;">空中宣讲</a></div>
+            </div>
+            <div class="footer-menu-item" style="float: left;width: 20%;">
+                <div class="footer-menu-title"  style="margin-bottom: 30px;">
+                    <a href="#" style="font-size: 20px;margin-left: -15px;font-size: 30px;color: black;text-decoration: none;">关于公司</a>
+                </div>
+                <div style="margin-bottom:20px;"><a href="#" style="margin: -7px;  font-size: 20px;color: black;text-decoration: none;">公司简介</a></div>
+                <div style="margin-bottom:20px;"><a href="#" style="margin: -7px;  font-size: 20px;color: black;text-decoration: none;">公司治理</a></div>
+                <div style="margin-bottom:20px;"><a href="#" style="margin: -7px;  font-size: 20px;color: black;text-decoration: none;">可持续发展</a></div>
+                <div style="margin-bottom:20px;"><a href="#" style="margin: -7px font-size: 20px;color: black;text-decoration: none;">管理信息</a></div>
+            </div>
+
+            <div class="footer-menu-item" style="float: left;width: 17%;">
+                <div class="footer-menu-title" style="margin-bottom: 30px;">
+                    <a href="#"  style="font-size: 20px;margin-left: -135px;font-size: 30px;color: black;text-decoration: none;">新闻新知</a>
+                </div>
+                <div style="margin-bottom:20px;"><a href="#" style="margin: -120px;  font-size: 20px;color: black;text-decoration: none;">新闻公告</a></div>
+                <div style="margin-bottom:20px;"><a href="#" style="margin: -120px;  font-size: 20px;color: black;text-decoration: none;">安全通告</a></div>
+                <div style="margin-bottom:20px;"><a href="#" style="margin: -120px;  font-size: 20px;color: black;text-decoration: none;">展会活动</a></div>
+
+            </div>
+
+            <div class="footer-menu-item" style="float: left;width: 14.75%;">
+                <div class="footer-menu-title" style="margin-bottom: 30px;">
+                    <a href="#" style="font-size: 20px;margin-left: -250px;font-size: 30px;color: black;text-decoration: none;">快速链接</a>
+                </div>
+                           <div style="margin-bottom:20px;"><a href="#" style="margin: -240px;  font-size: 20px;color: black;text-decoration: none;">公司云</a></div>
+                          <div style="margin-bottom:20px;"> <a href="#" style="margin: -240px;  font-size: 20px;color: black;text-decoration: none;">心声社区</a></div>
+                          <div style="margin-bottom:20px;"> <a href="#" style="margin: -240px;  font-size: 20px;color: black;text-decoration: none;">企业业务</a></div>
+                         <div style="margin-bottom:20px;"><a href="#" style="margin: -240px;  font-size: 20px;color: black;text-decoration: none;">行业洞察</a></div>
+            </div>
+        </div>
+
+        <div class="footer-menu-image" style="float: left;">
+            <div class="footer-menu-image-tit" style="margin-right: 50px;margin-top: 50px;font-size: 35px;">关注我们</div>
+            <div class="footer-menu-image-tit" style="margin-right: 70px;margin-top: 55px;font-size: 25px;">Penge666</div>
+            <div id="footer-menu-Image">
+                <div style="float: left;margin-left:-40px;margin-right: 20px;"><a href="#"><img src="image/QQ.png"><a></div>
+                <div style="float: left;margin-left:-10px;margin-right: 20px;"><a href="#"><img src="image/微信.png"></a></div>
+                <div style="float: left;margin-left:-6px;margin-right: 20px;"><a href="#"><img src="image/微博.png"></a></div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+<iframe src="#" width="100%" scrolling="no" frameborder="0" height="10px" style="bottom: 0;"></iframe>
+
+	<script>
+		AOS.init({
+			easing: 'ease-out-back',
+			duration: 1000
+		});
+	</script>
+
+	<script>
+		hljs.initHighlightingOnLoad();
+
+		$('.hero__scroll').on('click', function(e) {
+			$('html, body').animate({
+				scrollTop: $(window).height()
+			}, 1200);
+		});
+	</script>
+    <script src="js/common.js"></script>
+<script>
+        // 当鼠标移入  onmouseover
+        // 当鼠标移出  onmouseout
+        var nodeSmall = my$('node_small');
+        nodeSmall.onmouseover = function () {
+            // my$('er').className = 'erweima show';
+            my$('er').className = my$('er').className.replace('hide', 'show');
+        }
+
+        nodeSmall.onmouseout = function () {
+            // my$('er').className = 'erweima hide';
+            my$('er').className = my$('er').className.replace('show', 'hide');
+        }
+		//var gunba=document.getElementById('gunba');
+		//gunba.onmouseover=function(){this.stop();}
+		//gunba.onmouseout=function(){this.start();}
+		//gunba.onmouseout=this.strat();
+    </script>
+</body>
+</html>

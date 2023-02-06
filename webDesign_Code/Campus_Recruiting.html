@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/broadcast-me.css">
+      <link href="css/tou.css" type="text/css" rel="stylesheet">
+    <style type="text/css">
+         body {
+      padding: 0 1rem;
+    }
+    #box {
+      margin: 5rem auto;
+      width: 1900px;
+       height: 600px;
+    }
+    @media screen and (max-width:768px) {
+      #box {
+        width: 100%;
+      }
+
+    }
+    </style>
+      <!-- 引入插件的css文件 -->
+    <link rel="stylesheet" href="css/broadcast-me.css">
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .shubiao:hover{
+            color: #c7000b;
+            margin-left: -20px;
+        }
+        .fangdayixia:hover{
+               transform: scale(1.2);
+        }
+
+
+
+        .Select {
+            display: inline-block;
+            width: 300px;
+            position: relative;
+            vertical-align: middle;
+            padding: 0;
+            overflow: hidden;
+            background-color: #fff;
+            color: #555;
+            border: 1px solid #aaa;
+            text-shadow: none;
+            border-radius: 4px;
+            transition: box-shadow 0.25s ease;
+            z-index: 2;
+        }
+
+       .Select:hover {
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+        }
+
+        .Select:before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-top-color: #ccc;
+            top: 14px;
+            right: 10px;
+            cursor: pointer;
+            z-index: -2;
+        }
+        .Select select {
+            cursor: pointer;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            background: transparent;
+            background-image: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+
+
+        .Select select:focus {
+            outline: none;
+        }
+
+    </style>
+
+    <style type="text/css">
+         .table-one{
+            font-size: 30px;
+            margin-left: 100px;
+            float: left;
+            margin-top: 35px;
+        }
+        .table-two{
+            float: left;
+            font-size: 20px;
+            margin-left: 120px;
+             margin-top: 35px;
+            color: #808080;
+        }
+        .table-three{
+            font-size: 30px;
+            margin-left: 100px;
+            float: left;
+            margin-top: 35px;
+        }
+        .TABLE{
+            border: 1px dashed lightgray; border-top: none; border-left: none; border-right: none;width: 1400px;padding-bottom: 20px;margin-bottom: 15px;
+            background-color: #F8F8F8;
+        }
+        .TABLE:hover{
+            background-color: #ededed;
+            color: #2c43fa;;
+        }
+
+    </style>
+    <script>
+    /**
+     * 分页函数
+     * pno--页数
+     * psize--每页显示记录数
+     * 分页部分是从真实数据行开始，因而存在加减某个常数，以确定真正的记录数
+     * 纯js分页实质是载数据行全部加，通过是否显示属性完成分页功能
+     **/
+    function goPage(pno,psize){
+      var itable = document.getElementById("idData");
+      var num = itable.rows.length;//表格所有行数(所有记录数)
+      console.log(num);
+      var totalPage = 0;//总页数
+      var pageSize = psize;//每页显示行数
+      //总共分几页
+      if(num/pageSize > parseInt(num/pageSize)){
+          totalPage=parseInt(num/pageSize)+1;
+        }else{
+          totalPage=parseInt(num/pageSize);
+        }
+      var currentPage = pno;//当前页数
+      var startRow = (currentPage - 1) * pageSize+1;//开始显示的行 31
+        var endRow = currentPage * pageSize;//结束显示的行  40
+        endRow = (endRow > num)? num : endRow;  //40
+        console.log(endRow);
+        //遍历显示数据实现分页
+      for(var i=1;i<(num+1);i++){
+        var irow = itable.rows[i-1];
+        if(i>=startRow && i<=endRow){
+          irow.style.display = "block";
+        }else{
+          irow.style.display = "none";
+        }
+      }
+      var tempStr = "<span style='font-size: 35px;margin-left: -180px;'>职位信息&nbsp; &nbsp;&nbsp;共"+num+"<span style='font-size: 35px;'>条记录&nbsp; &nbsp;&nbsp;分"+totalPage+"页 &nbsp;&nbsp;当前第"+currentPage+"页&nbsp; &nbsp;";
+      if(currentPage>1){
+        tempStr += "<a href=\"#\" onClick=\"goPage("+(1)+","+psize+")\">首页&nbsp; &nbsp;</a>";
+        tempStr += "<a href=\"#\" onClick=\"goPage("+(currentPage-1)+","+psize+")\"><上一页</a>"
+      }else{
+        tempStr += "首页&nbsp; &nbsp;";
+        tempStr += "<上一页&nbsp;";
+      }
+      if(currentPage<totalPage){
+        tempStr += "<a href=\"#\" onClick=\"goPage("+(currentPage+1)+","+psize+")\">下一页></a>";
+        tempStr += "<a href=\"#\" onClick=\"goPage("+(totalPage)+","+psize+")\">&nbsp;尾页</a>";
+      }else{
+        tempStr += "下一页>";
+        tempStr += "尾页";
+      }
+      document.getElementById("barcon").innerHTML = tempStr;
+    }
+    </script>
+
+</head>
+<body onLoad="goPage(1,10);">
+
+<div id="header">
+    <div class="header_inner_top"></div>
+    <div class="header_inner_bottom">
+        <div class="nav">
+        <div class="logo"><a href="#"><img src="image/066.jpg" height="75px" width="75px"/></a></div>
+        <div class="header_inner_bottom_middle">
+        <ul class="menu">
+            <li><a href="#" target="_blank" >首页</a></li>
+            <li><a href="#"  class="fanzhuan">产品</a>
+                <ul class="sub_menu">
+                    <li><a href="#">手机</a></li>
+                    <li><a href="#">平板</a></li>
+                    <li><a href="#">VR</a></li>
+                    <li><a href="#">电脑</a></li>
+                   <li><a href="#">智能手表</a></li>
+                    <li class="#"><a href="wyqn.html">敬请期待</a></li>
+                </ul>
+            </li>
+            <li><a href="zhuce.html">校园招聘</a></li>
+            <li><a href="#" target="_blank">新闻公告</a></li>
+            <li><a href="#">联系我们</a></li>
+        </ul>
+        </div>
+        <div class="header_inner_bottom_right">
+            <ul>
+
+                <li class="header_icom"><a href="#"><img  src="image/icom_03.png"/></a></li>
+                <li class="header_icom"><a href="#"><img  src="image/登入%20(1).png"/></a></li>
+                <li class="header_icom"><a href="#"><img  src="image/icom_02.png"/></a></li>
+
+            </ul>
+        </div>
+       </div>
+   </div>
+</div>
+
+
+<div id="box">  <!--轮播图-->
+  </div>
+  <!-- 引入插件的js文件 -->
+  <script src="js/broadcast-me.js"></script>
+  <script>
+    var box = document.getElementById('box');
+    var imagesAndUrl = [{
+      imgSrc : 'image/u=2003583394,711464417&fm=26&gp=0.jpg',
+      linkHref : "#"
+    },{
+      imgSrc : 'image/u=2003583394,711464417&fm=26&gp=0.jpg',
+      linkHref : '1'
+    },{
+      imgSrc : 'image/our_vision03.jpg',
+      linkHref : '#'
+    },{
+      imgSrc : 'image/our_vision04.jpg',
+      linkHref : '#'
+    },{
+      imgSrc : 'image/our_vision05.jpg',
+      linkHref : '#'
+    }];
+    var broadcast = new Broadcast(box,imagesAndUrl,{
+      transitionTime : 800, // 动画过渡时间，默认为800ms
+      intervalTime : 5000 // 图片切换时间，默认为5s
+    });
+  </script>
+
+
+
+<div id="BBOOXX" style="height:500px;margin-top: 80px;">
+    <div id="BBOOXX1" style="height:270px;float: left;width: 300px;background-color: #f5f9f8;margin-left: 240px;border-radius: 25px;">
+        <div class="BBOOXX-nei" style="padding-top: 50px;padding-left: 50px;font-size: 42px;"><a href="#" class="shubiao">应届生</a></div>
+        <div class="jinru" style="padding-left: 210px;padding-top: 50px;"><a href="#" class="photo"><img class="fangdayixia" src="image/进入.png"></a></div>
+    </div>
+     <div id="BBOOXX2" style="height:270px;float: left;width: 300px;background-color: #f5f9f8;margin-left: 79px;border-radius: 25px;">
+         <div class="BBOOXX-nei" style="padding-top: 50px;padding-left: 50px;font-size: 42px;"><a href="#" class="shubiao">实习生</a></div>
+          <div class="jinru" style="padding-left: 210px;padding-top: 50px;"><a href="#"><img class="fangdayixia" src="image/进入.png"></a></div>
+     </div>
+     <div id="BBOOXX3" style="height:270px;float: left;width: 300px;background-color: #f5f9f8;margin-left: 79px;border-radius: 25px;">
+         <div class="BBOOXX-nei" style="padding-top: 50px;padding-left: 50px;font-size: 42px;"><a href="#" class="shubiao">留学生</a></div>
+          <div class="jinru" style="padding-left: 210px;padding-top: 50px;"><a href="#"><img class="fangdayixia" src="image/进入.png"></a></div>
+     </div>
+     <div  id="BBOOXX4" style="height:270px;float: left;width: 300px;background-color:#f5f9f8;margin-left: 79px;border-radius: 25px;">
+         <div class="BBOOXX-nei" style="padding-top: 50px;padding-left: 50px;font-size: 42px;"><a href="#" class="shubiao">海外本地</a></div>
+         <div class="jinru" style="padding-left: 210px;padding-top: 50px;"><a href="#"><img class="fangdayixia" src="image/进入.png"></a></div>
+     </div>
+</div>
+
+
+<div >
+
+<div id="BOX3" style="margin-bottom: 300px;">
+    <div  style="margin-left: 800px;font-size: 25px;margin-top:-30px;">
+        <h1>招聘职位搜索</h1>
+    </div>
+    <div  class="BOX3-TOP">
+        <div id="BOX3-TOP-1" style="float: left;width: 230px;height: 150px;margin-left: 180px;margin-top: 50px;">
+            <div style="color: #808080;font-size: 25px;margin-bottom: 20px;margin-left: 15px;">类型</div>
+             <select style="width: 220px;height: 50px; font-family: 楷体;font-size: 25px;" class="Select">
+                <option value="AVG" style="font-family: 楷体;font-size: 25px;">应届生</option>
+                <option value ="SUM">实习生</option>
+                <option value ="MAX">留学生</option>
+                <option value="MIN">海外本地</option>
+            </select>
+        </div>
+        <div style="float: left;width: 230px;height: 150px;margin-left: 50px;margin-top: 50px;">
+            <div style="color: #808080;font-size: 25px;margin-bottom: 20px;margin-left: 15px;">职能</div>
+                 <select style="width: 220px;height: 50px; font-family: 楷体;font-size: 25px;" class="Select">
+                    <option value="AVG" style="font-family: 楷体;font-size: 25px;">不限</option>
+                    <option value ="SUM">研发类</option>
+                    <option value ="MAX">服务类</option>
+                    <option value="MIN">供应链类</option>
+                     <option value="MIN">人力资源类</option>
+                     <option value="MIN">销售类</option>
+                     <option value="MIN">财经类</option>
+                </select>
+        </div>
+        <div style="float: left;width: 230px;height: 150px;margin-left: 50px;margin-top: 50px;">
+             <div style="color: #808080;font-size: 25px;margin-bottom: 20px;margin-left: 15px;">国家/地区</div>
+                 <select style="width: 220px;height: 50px; font-family: 楷体;font-size: 25px;" class="Select">
+
+                    <option value="AVG" style="font-family: 楷体;font-size: 25px;">中国</option>
+                    <option value ="SUM">美国</option>
+                    <option value ="MAX">日本</option>
+                    <option value="MIN">澳大利亚</option>
+                     <option value="MIN">波兰</option>
+                     <option value="MIN">加拿大</option>
+
+                </select>
+        </div>
+        <div style="float: left;width: 230px;height: 150px;margin-left: 50px;margin-top: 50px;">
+                 <div style="color: #808080;font-size: 25px;margin-bottom: 20px;margin-left: 15px;">城市</div>
+                 <select style="width: 220px;height: 50px; font-family: 楷体;font-size: 25px;" class="Select">
+                    <option value="AVG" style="font-family: 楷体;font-size: 25px;">不限</option>
+                    <option value ="SUM">北京</option>
+                    <option value ="MAX">上海</option>
+                    <option value="MIN">广州</option>
+                     <option value="MIN">福建</option>
+                     <option value="MIN">成都</option>
+                     <option value="MIN">吉林</option>
+                </select>
+        </div>
+        <div style="float: left;width: 230px;height: 150px;margin-left: 50px;margin-top: 50px;">
+            <div style="color: #808080;font-size: 25px;margin-bottom: 20px;margin-left: 15px;">关键字</div>
+            <input type="text;"  placeholder="请输入"  style="width: 220px;height: 50px;border-radius: 20px;font-family: 楷体;font-size: 25px;">
+
+        </div>
+        <button style="float: left;background-color: #c7000b;width: 100px;height: 50px;margin-left: 0px;margin-top: 105px;color: white;text-align: center;font-size: 25px;border-radius: 20px;">
+            <div style="margin-top: 4px;">搜索</div>
+        </button>
+    </div>
+</div>
+
+<table id="idData" width="1600px;" style="margin-top: 200px;margin-left: 180px;" >
+
+
+      <tr class="TABLE" style="">
+          <td><div class="table-one" style="font-size: 30px;">技术研究工程师</div></td>
+          <td><div class="table-three" style="">工作地点： 中国/杭州</div></td>
+          <td><div class="table-two">研究生 实习生</div></td>
+          <td><div class="table-two">研发类-技术族</div></td>
+          <td><a href="#"><img class="fangdayixia" src="image/__进入.png" width="50px" style="padding-left: 40px;padding-top: 28px;"></a></td>
+      </tr>
+
+    <tr class="TABLE" style="">
+          <td><div class="table-one" style="font-size: 30px;">人工智能工程师</div></td>
+          <td><div class="table-three" style="">工作地点： 中国/福建</div></td>
+          <td><div class="table-two">研究生 实习生</div></td>
+          <td><div class="table-two">研发类-技术族</div></td>
+        <td><a href="#"><img class="fangdayixia" src="image/__进入.png" width="50px" style="padding-left: 40px;padding-top: 28px;"></a></td>
+      </tr>
+
+      <tr class="TABLE" style="">
+          <td><div class="table-one" style="font-size: 30px;">硬件技术工程师</div></td>
+          <td><div class="table-three" style="">工作地点： 中国/吉林</div></td>
+          <td><div class="table-two">研究生 实习生</div></td>
+          <td><div class="table-two">研发类-技术族</div></td>
+          <td><a href="#"><img class="fangdayixia" src="image/__进入.png" width="50px" style="padding-left: 40px;padding-top: 28px;"></a></td>
+      </tr>
+     <tr class="TABLE" style="">
+          <td><div class="table-one" style="font-size: 30px;">芯片设计工程师</div></td>
+          <td><div class="table-three" style="">工作地点： 中国/上海</div></td>
+          <td><div class="table-two">研究生 实习生</div></td>
+          <td><div class="table-two">研发类-技术族</div></td>
+         <td><a href="#"><img class="fangdayixia" src="image/__进入.png" width="50px" style="padding-left: 40px;padding-top: 28px;"></a></td>
+      </tr>
+    <tr class="TABLE" style="">
+          <td><div class="table-one" style="font-size: 30px;">器件设计工程师</div></td>
+          <td><div class="table-three" style="">工作地点： 中国/杭州</div></td>
+          <td><div class="table-two">研究生 实习生</div></td>
+          <td><div class="table-two">研发类-技术族</div></td>
+        <td><a href="#"><img class="fangdayixia" src="image/__进入.png" width="50px" style="padding-left: 40px;padding-top: 28px;"></a></td>
+      </tr>
+     <tr class="TABLE" style="">
+          <td><div class="table-one" style="font-size: 30px;">热学设计工程师</div></td>
+          <td><div class="table-three" style="">工作地点： 中国/成都</div></td>
+          <td><div class="table-two">研究生 实习生</div></td>
+          <td><div class="table-two">研发类-技术族</div></td>
+         <td><a href="#"><img class="fangdayixia" src="image/__进入.png" width="50px" style="padding-left: 40px;padding-top: 28px;"></a></td>
+      </tr>
+     <tr class="TABLE" style="">
+          <td><div class="table-one" style="font-size: 30px;">网络安全研究员</div></td>
+          <td><div class="table-three" style="">工作地点： 中国/黑龙江</div></td>
+          <td><div class="table-two">研究生 实习生</div></td>
+          <td><div class="table-two">研发类-技术族</div></td>
+         <td><a href="#"><img class="fangdayixia" src="image/__进入.png" width="50px" style="padding-left: 40px;padding-top: 28px;"></a></td>
+      </tr>
+     <tr class="TABLE" style="">
+          <td><div class="table-one" style="font-size: 30px;">产品数据工程师</div></td>
+          <td><div class="table-three" style="">工作地点： 中国/内蒙古</div></td>
+          <td><div class="table-two">研究生 实习生</div></td>
+          <td><div class="table-two">研发类-技术族</div></td>
+         <td><a href="#"><img class="fangdayixia" src="image/__进入.png" width="50px" style="padding-left: 40px;padding-top: 28px;"></a></td>
+      </tr>
+     <tr class="TABLE" style="">
+          <td><div class="table-one" style="font-size: 30px;">资料开发工程师</div></td>
+          <td><div class="table-three" style="">工作地点： 中国/宁夏</div></td>
+          <td><div class="table-two">研究生 实习生</div></td>
+          <td><div class="table-two">研发类-技术族</div></td>
+         <td><a href="#"><img class="fangdayixia" src="image/__进入.png" width="50px" style="padding-left: 40px;padding-top: 28px;"></a></td>
+      </tr>
+     <tr class="TABLE" style="">
+          <td><div class="table-one" style="font-size: 30px;">技术研究工程师</div></td>
+          <td><div class="table-three" style="">工作地点： 中国/广州</div></td>
+          <td><div class="table-two">研究生 实习生</div></td>
+          <td><div class="table-two">研发类-技术族</div></td>
+         <td><a href="#"><img class="fangdayixia" src="image/__进入.png" width="50px" style="padding-left: 40px;padding-top: 28px;"></a></td>
+      </tr>
+    <tr class="TABLE" style="">
+          <td><div class="table-one" style="font-size: 30px;">技术研究工程师</div></td>
+          <td><div class="table-three" style="">工作地点： 中国/杭州</div></td>
+          <td><div class="table-two">研究生 实习生</div></td>
+          <td><div class="table-two">研发类-技术族</div></td>
+        <td><a href="#"><img class="fangdayixia" src="image/__进入.png" width="50px" style="padding-left: 40px;padding-top: 28px;"></a></td>
+    </tr>
+     <tr class="TABLE" style="">
+          <td><div class="table-one" style="font-size: 30px;">技术研究工程师</div></td>
+          <td><div class="table-three" style="">工作地点： 中国/杭州</div></td>
+          <td><div class="table-two">研究生 实习生</div></td>
+          <td><div class="table-two">研发类-技术族</div></td>
+        <td><a href="#"><img src="image/__进入.png" width="50px" style="padding-left: 40px;padding-top: 28px;"></a></td>
+    </tr>
+
+     <tr class="TABLE" style="">
+          <td><div class="table-one" style="font-size: 30px;">技术研究工程师</div></td>
+          <td><div class="table-three" style="">工作地点： 中国/杭州</div></td>
+          <td><div class="table-two">研究生 实习生</div></td>
+          <td><div class="table-two">研发类-技术族</div></td>
+        <td><a href="#"><img src="image/__进入.png" width="50px" style="padding-left: 40px;padding-top: 28px;"></a></td>
+    </tr>
+     <tr class="TABLE" style="">
+          <td><div class="table-one" style="font-size: 30px;">技术研究工程师</div></td>
+          <td><div class="table-three" style="">工作地点： 中国/杭州</div></td>
+          <td><div class="table-two">研究生 实习生</div></td>
+          <td><div class="table-two">研发类-技术族</div></td>
+        <td><a href="#"><img src="image/__进入.png" width="50px" style="padding-left: 40px;padding-top: 28px;"></a></td>
+    </tr>
+     <tr class="TABLE" style="">
+          <td><div class="table-one" style="font-size: 30px;">技术研究工程师</div></td>
+          <td><div class="table-three" style="">工作地点： 中国/杭州</div></td>
+          <td><div class="table-two">研究生 实习生</div></td>
+          <td><div class="table-two">研发类-技术族</div></td>
+        <td><a href="#"><img src="image/__进入.png" width="50px" style="padding-left: 40px;padding-top: 28px;"></a></td>
+    </tr>
+     <tr class="TABLE" style="">
+          <td><div class="table-one" style="font-size: 30px;">技术研究工程师</div></td>
+          <td><div class="table-three" style="">工作地点： 中国/杭州</div></td>
+          <td><div class="table-two">研究生 实习生</div></td>
+          <td><div class="table-two">研发类-技术族</div></td>
+        <td><a href="#"><img src="image/__进入.png" width="50px" style="padding-left: 40px;padding-top: 28px;"></a></td>
+    </tr>
+     <tr class="TABLE" style="">
+          <td><div class="table-one" style="font-size: 30px;">技术研究工程师</div></td>
+          <td><div class="table-three" style="">工作地点： 中国/杭州</div></td>
+          <td><div class="table-two">研究生 实习生</div></td>
+          <td><div class="table-two">研发类-技术族</div></td>
+        <td><a href="#"><img src="image/__进入.png" width="50px" style="padding-left: 40px;padding-top: 28px;"></a></td>
+    </tr>
+     <tr class="TABLE" style="">
+          <td><div class="table-one" style="font-size: 30px;">技术研究工程师</div></td>
+          <td><div class="table-three" style="">工作地点： 中国/杭州</div></td>
+          <td><div class="table-two">研究生 实习生</div></td>
+          <td><div class="table-two">研发类-技术族</div></td>
+        <td><a href="#"><img src="image/__进入.png" width="50px" style="padding-left: 40px;padding-top: 28px;"></a></td>
+    </tr>
+     <tr class="TABLE" style="">
+          <td><div class="table-one" style="font-size: 30px;">技术研究工程师</div></td>
+          <td><div class="table-three" style="">工作地点： 中国/杭州</div></td>
+          <td><div class="table-two">研究生 实习生</div></td>
+          <td><div class="table-two">研发类-技术族</div></td>
+        <td><a href="#"><img src="image/__进入.png" width="50px" style="padding-left: 40px;padding-top: 28px;"></a></td>
+    </tr>
+     <tr class="TABLE" style="">
+          <td><div class="table-one" style="font-size: 30px;">技术研究工程师</div></td>
+          <td><div class="table-three" style="">工作地点： 中国/杭州</div></td>
+          <td><div class="table-two">研究生 实习生</div></td>
+          <td><div class="table-two">研发类-技术族</div></td>
+        <td><a href="#"><img src="image/__进入.png" width="50px" style="padding-left: 40px;padding-top: 28px;"></a></td>
+    </tr>
+
+
+
+
+      <table width="1000px;" style="margin-left: 450px;position: absolute;bottom: -2090px;">
+        <tr><td><div id="barcon" name="barcon"></div></td></tr>
+      </table>
+
+    <div class="footer-main" style="height: 400px;margin-top:200px;bottom:0;background : #eeeeee;">
+        <div class="footer-menu">
+            <div class="footer-menu-item" style="float: left;width: 450px;">
+                <div class="footer-menu-title;" style="margin-bottom:30px;">
+                    <a href="#" style=";margin-left: 170px;font-size: 30px;color: black;text-decoration: none;margin-top: 200px;margin-bottom: 80px;">招聘首页</a>
+                </div>
+                <div style="margin-bottom:20px;"><a href="#" style="margin: 180px;  font-size: 20px;color: black;text-decoration: none;">校园招聘</a></div>
+                <div style="margin-bottom:20px;"><a href="#"  style="margin: 180px;  font-size: 20px;color: black;text-decoration: none;">社会招聘</a></div>
+                <div style="margin-bottom:20px;"><a href="#"  style="margin: 180px;  font-size: 20px;color: black;text-decoration: none;">招聘动态</a></div>
+                <div style="margin-bottom:20px;"><a href="#"  style="margin: 180px;  font-size: 20px;color: black;text-decoration: none;">空中宣讲</a></div>
+            </div>
+            <div class="footer-menu-item" style="float: left;width: 20%;">
+                <div class="footer-menu-title"  style="margin-bottom: 30px;">
+                    <a href="#" style="font-size: 20px;margin-left: -15px;font-size: 30px;color: black;text-decoration: none;">关于公司</a>
+                </div>
+                <div style="margin-bottom:20px;"><a href="#" style="margin: -7px;  font-size: 20px;color: black;text-decoration: none;">公司简介</a></div>
+                <div style="margin-bottom:20px;"><a href="#" style="margin: -7px;  font-size: 20px;color: black;text-decoration: none;">公司治理</a></div>
+                <div style="margin-bottom:20px;"><a href="#" style="margin: -7px;  font-size: 20px;color: black;text-decoration: none;">可持续发展</a></div>
+                <div style="margin-bottom:20px;"><a href="#" style="margin: -7px font-size: 20px;color: black;text-decoration: none;">管理信息</a></div>
+            </div>
+
+            <div class="footer-menu-item" style="float: left;width: 17%;">
+                <div class="footer-menu-title" style="margin-bottom: 30px;">
+                    <a href="#"  style="font-size: 20px;margin-left: -135px;font-size: 30px;color: black;text-decoration: none;">新闻新知</a>
+                </div>
+                <div style="margin-bottom:20px;"><a href="#" style="margin: -120px;  font-size: 20px;color: black;text-decoration: none;">新闻公告</a></div>
+                <div style="margin-bottom:20px;"><a href="#" style="margin: -120px;  font-size: 20px;color: black;text-decoration: none;">安全通告</a></div>
+                <div style="margin-bottom:20px;"><a href="#" style="margin: -120px;  font-size: 20px;color: black;text-decoration: none;">展会活动</a></div>
+
+            </div>
+
+            <div class="footer-menu-item" style="float: left;width: 14.75%;">
+                <div class="footer-menu-title" style="margin-bottom: 30px;">
+                    <a href="#" style="font-size: 20px;margin-left: -250px;font-size: 30px;color: black;text-decoration: none;">快速链接</a>
+                </div>
+                           <div style="margin-bottom:20px;"><a href="#" style="margin: -240px;  font-size: 20px;color: black;text-decoration: none;">公司云</a></div>
+                          <div style="margin-bottom:20px;"> <a href="#" style="margin: -240px;  font-size: 20px;color: black;text-decoration: none;">心声社区</a></div>
+                          <div style="margin-bottom:20px;"> <a href="#" style="margin: -240px;  font-size: 20px;color: black;text-decoration: none;">企业业务</a></div>
+                         <div style="margin-bottom:20px;"><a href="#" style="margin: -240px;  font-size: 20px;color: black;text-decoration: none;">行业洞察</a></div>
+            </div>
+        </div>
+
+        <div class="footer-menu-image" style="float: left;">
+            <div class="footer-menu-image-tit" style="margin-right: 50px;margin-top: 50px;font-size: 35px;">关注我们</div>
+            <div id="footer-menu-Image">
+                <div style="float: left;margin-left:-40px;margin-right: 20px;"><a href="#"><img src="image/QQ.png"><a></div>
+                <div style="float: left;margin-left:-10px;margin-right: 20px;"><a href="#"><img src="image/微信.png"></a></div>
+                <div style="float: left;margin-left:-6px;margin-right: 20px;"><a href="#"><img src="image/微博.png"></a></div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

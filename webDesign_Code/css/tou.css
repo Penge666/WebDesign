@@ -1,0 +1,289 @@
+@charset "utf-8";
+/* CSS Document */
+li{
+	list-style:none;
+	}
+a{
+	text-decoration:none;
+	color:#000;
+	}
+*{
+	margin:0;
+	padding:0;
+	}
+
+
+#header{
+	height:120px;
+	background-image:url(../image/nav_bg_02.jpg);
+	position:fixed;
+	width:100%;
+	top:0;
+	z-index:10;
+	}
+.logo{
+	float:left;
+	padding-left:143px;
+	padding-top:2.5px;
+	}
+.header_inner_top{
+	height:40px;
+	}
+.header_inner_bottom{
+	height:80px;
+	}
+.nav{
+	height:90px;
+	}
+.nav>ul{
+	width:500px;
+	height:80px;
+	padding-left:766px;
+	}
+.menu{
+	margin:0;
+	position:fixed;}
+.menu>li{
+	webkit-box-flex: 1;
+    height: 80px;
+
+    text-align: center;
+    line-height: 80px;
+    position: relative;
+	}
+.sub_menu li a{
+	display:block;
+	}
+.menu>li{
+	float:left;
+	width:120px;
+	line-height:80px;
+	font-size:20px;
+	font-family:"微软雅黑";
+	text-align:center;
+	height:80px;
+
+	}
+
+.sub_menu{
+	height:240px;
+	width:160px;
+	border-radius:0 0 4px 4px;
+	font-size:18px;
+	font-family:"微软雅黑";
+	-webkit-perspective:400px;
+	max-height: 0;
+	-webkit-perspective:400px;
+	position: absolute;
+}
+.sub_menu  li{
+	height:40px;
+	line-height:40px;
+	border-bottom:solid #ededed 1px;
+	transform:rotateY(90deg);
+	transition:opacity .4s,transform .5s;
+	background:#FFF;
+	}
+.menu>li:hover .sub_menu li{
+	opacity: 1;
+	transform:none;
+}
+.sub_menu{
+	background-color:#2c43fa;
+	color:#FFF;
+	}
+.menu>li a:hover
+{
+	background:#e4e4e4;
+	}
+.menu>li a{
+	display:block;
+	}
+.sub_menu li a:hover{
+	background:#2c43fa;
+	color:#FFF;
+	}
+#header .teshuli{
+	border-bottom:solid #ededed 0px;
+	}
+
+#qianru{
+	width:1920px;
+	height:888px;
+	}
+
+
+.sub_menu li:nth-child(1){
+	 -webkit-transition-delay: 250ms;
+}
+.sub_menu li:nth-child(2){
+	 -webkit-transition-delay: 200ms;
+
+}
+.sub_menu li:nth-child(3){
+	 -webkit-transition-delay: 150ms;
+
+}
+.sub_menu li:nth-child(4){
+	 -webkit-transition-delay: 100ms;
+
+}
+.sub_menu li:nth-child(5){
+	 -webkit-transition-delay: 50ms;
+
+}
+.sub_menu li:nth-child(6){
+	 -webkit-transition-delay: 0ms;
+
+}
+.menu>li:hover .sub_menu li:nth-child(1)
+	{
+		 -webkit-transition-delay: 0s;
+	}
+.menu>li:hover .sub_menu li:nth-child(2)
+	{
+		 -webkit-transition-delay: 50ms;
+	}
+.menu>li:hover .sub_menu li:nth-child(3)
+	{
+		 -webkit-transition-delay: 100ms;
+	}
+.menu>li:hover .sub_menu li:nth-child(4)
+	{
+		 -webkit-transition-delay: 150ms;
+	}
+.menu>li:hover .sub_menu li:nth-child(5)
+	{
+		 -webkit-transition-delay: 200ms;
+	}
+.menu>li:hover .sub_menu li:nth-child(6)
+	{
+		 -webkit-transition-delay: 250ms;
+	}
+.header_inner_bottom_middle{
+	margin-left:475px;
+	float:left;
+	width:430px;
+	height:80px;
+	}
+#header .header_inner_bottom_right{
+	width:292px;
+	height:79px;
+	float:left;
+	margin-left:442px;
+	position:fixed;
+	width:100%;
+	left:1024px;
+	}
+.header_icom{
+	float:left;
+	width:70px;
+	height:79px;
+	line-height:79px;
+	text-align:center;
+	border:1px solid #eeeeee;
+	border-bottom:none;
+	}
+.header_icom img{
+	padding-top:30px;
+	}
+.header_icom a{
+	display:block;
+	height:80px;
+	}
+.header_icom a:hover{
+	background-color:#e4e4e4;
+	}
+
+.nodeSmall {
+            width: 100px;
+            height: 100px;
+            background:  url(../image/bgs.png)  no-repeat ;
+            position: fixed;
+            right:10px;
+            top: 40%;
+			z-index:10;
+        }
+.nodeSmall a {
+            display: block;
+            width: 250px;
+            height: 250px;
+        }
+ .erweima {
+            position: absolute;
+            top: 0;
+            left: -150px;
+        }
+.hide {
+            display: none;
+        }
+.show {
+            display: block;
+        }
+
+
+/* 使用绝对定位居中
+			 * 这里使用40的height，border-radius也40px，当加上10px的padding的时候，
+			 * 此时的border-radius就可以认为是60px，而不是40px:->即此时是以直径为60px画圆。
+			 */
+			.search{
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%,-50%);
+				background-color: black;
+				height: 40px;
+				border-radius: 40px;
+				padding: 10px;
+			}
+			/* 设置输入框的样式，inherit为继承父元素的背景色 */
+			.search-input{
+				border: none;
+				outline: none;
+				padding: 0;
+				background-color: inherit;
+				color: #fff;
+				font-size: 16px;
+				transition: 0.4s;
+				width: 0;
+				line-height: 40px;
+				float: left;
+			}
+			/* 设置字体图标的容器样式，并使用flex设置居中 */
+			.search-icon{
+				color: #FFA502;
+				float: right;
+				width: 40px;
+				height: 40px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				border-radius: 50%;
+
+
+
+			}
+			/* 当鼠标移入时，动态显示输入框 */
+			.search:hover > .search-input{
+				width: 260px;
+
+			}
+			/* 当鼠标移入时，设置search-icon这个元素背景色为白色 */
+			.search:hover > .search-icon{
+				background-color: white;
+					margin-top: -40px;
+			}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
